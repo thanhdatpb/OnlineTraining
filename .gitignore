@@ -365,5 +365,5 @@ FodyWeavers.xsd
 
 
 #File Config
-Model/Web.config
-OnlineTraning/App.config
+Web.config
+App.config
