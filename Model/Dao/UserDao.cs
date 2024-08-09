@@ -18,20 +18,41 @@ namespace Model.Dao
             db.SaveChanges();
             return entity.ID;
         }
-        public bool Update(User entity) {
+        public bool Update(User entity)
+        {
             try
             {
                 var user = db.Users.Find(entity.ID);
-                user.Name = entity.Name;
                 if (!string.IsNullOrEmpty(entity.Password))
                 {
                     user.Password = entity.Password;
                 }
+                user.Name = entity.Name;
+                user.Address = entity.Address;
                 user.Email = entity.Email;
+                user.Phone = entity.Phone;
+                user.ModifiedDate = entity.ModifiedDate;
+                user.ModifiedBy = entity.ModifiedBy;
+                user.Status = entity.Status;
+                db.SaveChanges();
+
                 return true;
             }
-            catch(Exception ex) {
+            catch (Exception)
+            {
                 return false;
             }
+        }
+        public bool Delete(int id)
+        {
+            try
+            {
+                return true;
+            }
+            catch(Exception)
+            { 
+                return false; 
+            }
+        }
     }
 }
