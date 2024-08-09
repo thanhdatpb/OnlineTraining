@@ -362,3 +362,8 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /OnlineTraining.sln
+
+
+#File Config
+Model/Web.config
+OnlineTraning/App.config
