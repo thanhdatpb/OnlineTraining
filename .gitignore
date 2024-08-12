@@ -364,6 +364,6 @@ FodyWeavers.xsd
 /OnlineTraining.sln
 
 
-#File Config
-Model/Web.config
-OnlineTraning/App.config
+# Hide Config file
+Web.config
+App.config
