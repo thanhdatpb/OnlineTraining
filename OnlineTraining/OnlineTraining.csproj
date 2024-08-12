@@ -104,10 +104,15 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
+    <Content Include="web\admin\css\font-awesome.min.css" />
+    <Content Include="web\admin\css\style.css" />
+    <Content Include="web\admin\images\banner.jpg" />
+    <Content Include="web\admin\images\content.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
@@ -120,6 +125,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -127,10 +133,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="web\admin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="web\admin\fonts\fontawesome-webfont.woff" />
+    <Content Include="web\admin\fonts\fontawesome-webfont.woff2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Controllers\" />
