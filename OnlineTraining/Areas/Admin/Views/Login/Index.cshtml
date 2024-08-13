@@ -1,99 +1,76 @@
-﻿@{
+﻿
+@{
     Layout = null;
 }
 @model OnlineTraining.Areas.Admin.Models.LoginModel
 
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Official Signup Form Flat Responsive widget Template :: w3layouts</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Official Signup Form Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <!-- fonts -->
-    <link href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="//fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
-    <!-- /fonts -->
-    <!-- css -->
-    <link href="~/web/admin/css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="~/web/admin/css/style.css" rel='stylesheet' type='text/css' media="all" />
-    <!-- /css -->
+    <meta charset="utf-8" />
+    <title>Màn hình đăng nhập</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Responsive bootstrap 4 admin template" name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="/assets/admin/images/logo.png">
+    <!-- App css -->
+    <link href="~/web/admin/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+    <link href="~/web/admin/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/web/admin/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet" />
 </head>
-<body>
-    <h1 class="w3ls">Official Signup Form</h1>
-    <div class="content-w3ls">
-        <div class="content-agile1">
-            <h2 class="agileits1">Official</h2>
-            <p class="agileits2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-        <div class="content-agile2">
-            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
-            {
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(false, "", new { @class = "text-danger" });
-                <div class="form-group mb-3">
-                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Username", @autofocus = "autofocus" });
-                </div>
-                <div class="form-group mb-3">
-                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "PassWord", @type = "password"});
-                </div>
-                <div class="form-group mb-3">
-                    <div class="custom-control custom-checkbox">
-                        <label class="custom-control-label" for="checkbox-signin">Rememberme</label>
-                        @Html.CheckBoxFor(model => model.RememberMe)
-                        Remember me
+<body class="authentication-page">
+    <div class="account-pages my-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card mt-4">
+                        <div class="card-header bg-img p-5 position-relative">
+                            <div class="bg-overlay"></div>
+                            <h4 class="text-white text-center mb-0">Đăng nhập vào trang quản trị</h4>
+                        </div>
+                        <div class="card-body p-4 mt-2">
+                            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(false, "", new { @class = "text-danger" });
+
+                                <div class="form-group mb-3">
+                                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "UserName", @autofocus = "autofocus" })
+                                </div>
+                                <div class="form-group mb-3">
+                                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Password", @type = "password" })
+                                </div>
+                                <div class="form-group mb-3">
+                                    <div class="custom-control custom-checkbox">
+                                        <label>
+
+                                            @Html.CheckBoxFor(model => model.RememberMe)
+                                            Remember Me
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group text-center mt-5 mb-4">
+                                    <button class="btn btn-primary waves-effect width-md waves-light" type="submit">Đăng nhập</button>
+                                </div>
+                                <div class="form-group row mb-0">
+                                    <div class="col-sm-7">
+                                        <a href="#"><i class="fa fa-lock mr-1"></i> Quên mật khẩu?</a>
+                                    </div>
+                                    <div class="col-sm-5 text-right">
+                                        <a href="#">Tạo tài khoản</a>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
                     </div>
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="checkbox-signin"/>
-                        <label class="custom-control-label" form="checkbox-signin">Remember me</label>
-                    </div>
                 </div>
-
-             }
-
-            <form action="#" method="post">
-                <div class="form-control w3layouts">
-                    <input class="form-control" type="text" id="firstname" name="userName" placeholder="User Name" title="Please enter your User Name" required="">
-                </div>
-                @*
-                <div class="form-control w3layouts">
-                    <input class="form-control" type="email" id="email" name="email" placeholder="mail@example.com" title="Please enter a valid email" required="">
-                </div>
-                *@
-                <div class="form-control agileinfo">
-                    <input type="password" class="lock" name="password" placeholder="Password" id="password1" required="">
-                </div>
-                @*
-                <div class="form-control agileinfo">
-                    <input type="password" class="lock" name="confirm-password" placeholder="Confirm Password" id="password2" required="">
-                </div>
-                *@
-
-                <input type="submit" class="register" value="Login">
-            </form>
-            <script type="text/javascript">
-                window.onload = function () {
-                    document.getElementById("password1").onchange = validatePassword;
-                    document.getElementById("password2").onchange = validatePassword;
-                }
-                function validatePassword() {
-                    var pass2 = document.getElementById("password2").value;
-                    var pass1 = document.getElementById("password1").value;
-                    if (pass1 != pass2)
-                        document.getElementById("password2").setCustomValidity("Passwords Don't Match");
-                    else
-                        document.getElementById("password2").setCustomValidity('');
-                    //empty string means no validation error
-                }
-            </script>
-            <p class="wthree w3l">Sign in another way</p>
-            <ul class="social-agileinfo wthree2">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-            </ul>
+            </div>
         </div>
-        <div class="clear"></div>
     </div>
+    <script src="/assets/admin/js/vendor.min.js"></script>
+    <script src="/assets/admin/js/app.min.js"></script>
 </body>
 </html>
