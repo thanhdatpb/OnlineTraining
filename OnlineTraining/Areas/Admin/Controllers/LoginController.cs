@@ -1,12 +1,11 @@
 ﻿using Model.Dao;
 using OnlineTraining.Areas.Admin.Models;
 using OnlineTraining.Common;
-using System.Web.DynamicData;
 using System.Web.Mvc;
 
 namespace OnlineTraining.Areas.Admin.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : BaseController
     {
         // GET: Admin/Login
         public ActionResult Index()
