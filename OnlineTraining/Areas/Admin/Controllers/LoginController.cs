@@ -27,7 +27,7 @@ namespace OnlineTraining.Areas.Admin.Controllers
                     Session.Add(CommonConstants.USER_SESSION, usersession);
                     return RedirectToAction("Index", "Home");
                 }
-                else if (result == 0) 
+                else if (result == 0)
                 {
                     ModelState.AddModelError("", "Tài khoản không tồn tại");
                 }
