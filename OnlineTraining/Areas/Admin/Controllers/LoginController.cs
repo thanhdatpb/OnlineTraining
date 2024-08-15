@@ -5,7 +5,7 @@ using System.Web.Mvc;
 
 namespace OnlineTraining.Areas.Admin.Controllers
 {
-    public class LoginController : BaseController
+    public class LoginController : Controller
     {
         // GET: Admin/Login
         public ActionResult Index()
