@@ -10,7 +10,8 @@ namespace OnlineTraining.Areas.Admin.Controllers
         {
             var dao = new UserDao();
             var model = dao.ListAllPaging(searchSring, page, pageSize);
-            return View();
+            ViewBag.SearchSring = searchSring;  
+            return View(model);
         }
     }
 }
