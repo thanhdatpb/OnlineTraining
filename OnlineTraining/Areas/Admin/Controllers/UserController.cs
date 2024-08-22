@@ -1,12 +1,15 @@
-﻿using System.Web.Mvc;
+﻿using Model.Dao;
+using System.Web.Mvc;
 
 namespace OnlineTraining.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         // GET: Admin/User
-        public ActionResult Index()
+        public ActionResult Index(string searchSring, int page = 1, int pageSize = 200)
         {
+            var dao = new UserDao();
+            var model = dao.ListAllPaging(searchSring, page, pageSize);
             return View();
         }
     }
