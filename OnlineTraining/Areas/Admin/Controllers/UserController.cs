@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace OnlineTraining.Areas.Admin.Controllers
 {
-    public class UserController : BaseController
+    public class UserController : Controller
     {
         // GET: Admin/User
         public ActionResult Index(string searchSring, int page = 1, int pageSize = 200)
@@ -22,34 +22,55 @@ namespace OnlineTraining.Areas.Admin.Controllers
             new UserDao().Delete(id);
             return RedirectToAction("Index");
         }
+
         [HttpPost]
         public JsonResult AddUserAjax(string username, string name, string password, string address, string email, string phone)
         {
             try
             {
-                var dao = new UserDao();
-                User user = new User();     
-                var encryptedMd5Pas = Encryptor.MD5Hash(password);
+                // Kiểm tra dữ liệu đầu vào
+                if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(password))
+                {
+                    return Json(new { status = false, message = "Chưa nhập thông tin cần thiết" });
+                }
 
-                user.UserName = username;
-                user.Name = name;
-                user.Address = address;
-                user.Email = email;
-                user.Phone = phone;
-                user.Status = true;
+                // Tạo đối tượng User và thiết lập thuộc tính
+                var user = new User
+                {
+                    UserName = username,
+                    Name = name,
+                    Password = Encryptor.MD5Hash(password), // Giả định Encryptor nằm trong OnlineTraining.Common
+                    Address = address,
+                    Email = email,
+                    Phone = phone,
+                    CreateDate = DateTime.Now,
+                    Status = true
+                };
+
+                // Chèn người dùng vào cơ sở dữ liệu
+                var dao = new UserDao(); // Giả định UserDao nằm trong Model.Dao
                 long id = dao.Insert(user);
+
+                // Kiểm tra kết quả chèn dữ liệu
                 if (id > 0)
                 {
                     return Json(new { status = true });
                 }
                 else
                 {
-                    return Json(new { status = false });
+                    return Json(new { status = false, message = "Không thể thêm người dùng vào cơ sở dữ liệu." });
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                return Json(new { status = false });
+                // Ghi lại chi tiết lỗi (có thể sử dụng thư viện ghi log)
+                // Ví dụ: Log.Error(ex.Message);
+
+                return Json(new
+                {
+                    status = false,
+                    message = "Có lỗi xảy ra: " + ex.Message // Gửi thông báo lỗi chi tiết (chỉ dùng cho gỡ lỗi)
+                });
             }
         }
 
@@ -60,6 +81,7 @@ namespace OnlineTraining.Areas.Admin.Controllers
             {
                 var dao = new UserDao();
                 User user = new User();
+
                 user = dao.ViewDetail(Convert.ToInt16(userid));
 
                 user.Name = name;
@@ -68,6 +90,7 @@ namespace OnlineTraining.Areas.Admin.Controllers
                 user.Phone = phone;
 
                 bool editresult = dao.Update(user);
+
                 if (editresult == true)
                 {
                     return Json(new { status = true });
@@ -79,7 +102,10 @@ namespace OnlineTraining.Areas.Admin.Controllers
             }
             catch
             {
-                return Json(new { status = false });
+                return Json(new
+                {
+                    status = false
+                });
             }
         }
     }
