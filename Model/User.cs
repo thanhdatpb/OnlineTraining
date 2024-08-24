@@ -27,5 +27,6 @@ namespace Model
         public string ModifiedBy { get; set; }
         public bool Status { get; set; }
         public string ProductList { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }
