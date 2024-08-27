@@ -2,15 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model.Dao
 {
     public class UserDao
     {
         OnlineTrainingEntities db = null;
-        public UserDao() { 
+        public UserDao()
+        {
             db = new OnlineTrainingEntities();
         }
 
@@ -59,9 +58,9 @@ namespace Model.Dao
                 db.SaveChanges();
                 return true;
             }
-            catch(Exception)
-            { 
-                return false; 
+            catch (Exception)
+            {
+                return false;
             }
         }
 
@@ -76,7 +75,7 @@ namespace Model.Dao
         {
             IQueryable<User> model = db.Users;
             model = model.Where(x => x.UserName == "admin");
-       
+
             if (!string.IsNullOrEmpty(searchString))
             {
                 model = model.Where(x => x.UserName.Contains(searchString) || x.Name.Contains(searchString));
@@ -84,8 +83,9 @@ namespace Model.Dao
             return model.OrderByDescending(x => x.CreatDate).ToPagedList(page, pagesize);
         }
 
-        public User ViewDetail(int id) {
-            return db.Users.Find(id);  
+        public User ViewDetail(int id)
+        {
+            return db.Users.Find(id);
         }
 
         public int Login(string userName, string password, bool isLoginAdmin = false)
@@ -113,7 +113,7 @@ namespace Model.Dao
                         {
                             return -2;
                         }
-                    } 
+                    }
                 }
                 else
                 {
