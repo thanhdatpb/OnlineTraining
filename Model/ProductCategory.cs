@@ -10,8 +10,7 @@
 namespace Model
 {
     using System;
-    using System.Collections.Generic;
-    
+
     public partial class ProductCategory
     {
         public long ID { get; set; }
