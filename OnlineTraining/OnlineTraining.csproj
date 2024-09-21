@@ -303,6 +303,7 @@
     <Content Include="web\admin\libs\toastr\toastr.min.js" />
     <Content Include="web\admin\libs\x-editable\bootstrap-editable.css" />
     <Content Include="web\admin\libs\x-editable\bootstrap-editable.min.js" />
+    <Content Include="web\controller\userController.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
