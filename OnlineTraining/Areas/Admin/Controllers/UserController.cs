@@ -64,7 +64,6 @@ namespace OnlineTraining.Areas.Admin.Controllers
             catch (Exception ex)
             {
                 // Ghi lại chi tiết lỗi (có thể sử dụng thư viện ghi log)
-                // Ví dụ: Log.Error(ex.Message);
 
                 return Json(new
                 {
