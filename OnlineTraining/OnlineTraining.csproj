@@ -480,7 +480,6 @@
     <Content Include="web\admin\libs\jquery\jquery.slim.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
