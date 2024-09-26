@@ -485,9 +485,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Model\Database.csproj">
+    <ProjectReference Include="..\Model\Model.csproj">
       <Project>{16778fc7-ba0c-4b76-8b88-e35497753e73}</Project>
-      <Name>Database</Name>
+      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
